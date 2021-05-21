@@ -1,0 +1,121 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+    background-image: linear-gradient(to bottom left, #9f95a7, #989cb3);
+}
+
+.header-bar{
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+
+    color: #1b1b1b;
+    font-size: clamp(16px, 4vw, 40px);
+    font-weight: bold;
+    /*background-color: white;*/
+
+    border: 3px;
+    border-color: #2b2b2b;
+    border-style: solid;
+    border-radius: 8px;
+    background-color: #444444;
+}
+
+.header-buttons{
+    margin: auto;
+    width: 95%;
+    display: flexbox;
+    flex-flow:row wrap;
+    justify-content: center;
+}
+
+
+
+.bar { 
+    fill: #387a96;
+
+}
+svg {
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px;
+    border-color: #2b2b2b;
+    border-style: solid;
+    border-radius: 16px;
+    background-color: #444444;
+
+    max-width: 800px;
+  }
+
+.bottom-button-container{
+    width: calc(80% - 10px);
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-width: 800px;
+}
+
+.bottom-button{
+    width: 100px;
+    height: auto;
+    color: #c6c6c6;
+    font-size: 20px;
+    font-weight: bold;
+    border: 3px;
+    border-color: #2b2b2b;
+    border-style: solid;
+    border-radius: 8px;
+    background-color: #444444;
+}
+
+.bottom-button:hover{
+    color: #1b1b1b;
+    border: 3px;
+    border-color: #555555;
+    border-style: solid;
+    border-radius: 8px;
+    background-color: #696969; /* Nice */
+}
+
+.top-button-no-hover{
+    width: fit-content;
+    color: #c6c6c6;
+    font-size: clamp(8px, 4vw, 20px);
+    font-weight: bold;
+    border: 3px;
+    border-color: #ff3232;
+    border-style: solid;
+    border-radius: 8px;
+    background-color: #814c4c;
+}
+
+.top-button{
+    width: fit-content;
+    color: #c6c6c6;
+    font-size: clamp(10px, 4vw, 20px);
+    font-weight: bold;
+    border: 3px;
+    border-color: #2b2b2b;
+    border-style: solid;
+    border-radius: 8px;
+    background-color: #444444;
+}
+
+.top-button:hover{
+    color: #1b1b1b;
+    border: 3px;
+    border-color: #555555;
+    border-style: solid;
+    border-radius: 8px;
+    background-color: #696969; /* Nice */
+}
+
+#Reset{
+    float: right;
+}
