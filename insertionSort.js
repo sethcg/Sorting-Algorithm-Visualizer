@@ -5,7 +5,6 @@ function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
 //Color Palette
 var color_red = "#96384b";
-var color_blue = "#387a96"; //Not used in this sort
 var color_gold = "#baa347";
 var color_green = "#4b9638";
 
