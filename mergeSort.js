@@ -8,56 +8,67 @@ var color_blue = "#387a96";
 var color_gold = "#baa347";
 var color_green = "#4b9638";
 
-export async function mergeSort(array_to_sort){
-    const sort_changes = getMergeSortChanges(array_to_sort);
+export async function mergeSort(array){
+    const sort_changes = getChanges(array)
+    const bars = document.getElementsByClassName('bar');
     for(let index = 0; index < sort_changes.length; index++){
         const isColorChange = index % 3 !== 2;
         if(isColorChange){
             const [one, two] = sort_changes[index];
-            //await sleep(20);
             const color = index % 3 === 0 ? color_red : color_blue;
+
+            //Change Color
             document.getElementById("bar_" + one).style.backgroundColor = color;
             document.getElementById("bar_" + two).style.backgroundColor = color;
+            await sleep(50);
         }else{
-            //await sleep(20);
-            const [one, height] = sort_changes[index];
 
-            document.getElementById("bar_" + one).style.height = height +"px";
-            document.getElementById("bar_" + one).style.marginTop = (400 - height) +"px";
+            //Swap
+            await sleep(50);
+            const [barIndex, height] = sort_changes[index];
+            bars[barIndex].style.height = height + "px";
+            bars[barIndex].style.marginTop = (400 - height) +"px";
         }
     }
+    console.log("timesMergeSortHelperCalled: " + timesMergeSortHelperCalled);
+    console.log("timesMergeCalled: " + timesMergeCalled);
 }
 
-function getMergeSortChanges(arr) {
+function getChanges(array) {
     const changes = [];
-    const temp_array = arr.slice();
-    mergeSortHelper(arr, 0, arr.length - 1, temp_array, changes);
+    const temp_array = array.slice();
+    mergeSortHelper(array, 0, array.length - 1, temp_array , changes);
     return changes;
   }
+  
+  var timesMergeSortHelperCalled = 0;
+  function mergeSortHelper(array, start, end, temp_array, changes){
+    timesMergeSortHelperCalled++;
+    if (start === end) return;
+    const mid = Math.floor((start + end) / 2);
+    mergeSortHelper(temp_array , start, mid, array, changes);
+    mergeSortHelper(temp_array , mid + 1, end, array, changes);
+    merge(array, start, mid, end, temp_array, changes);
+  }
+  
+  var timesMergeCalled = 0;
+  function merge(array, start, mid, end, temp_array, changes){
+    
+    timesMergeCalled++;
 
-//Recursive function
-function mergeSortHelper(array, start, end, temp_array, changes){
-    if(start === end) { return; }
-	const mid = Math.floor((start + end) / 2);
-	mergeSortHelper(array, start, mid, temp_array, changes);
-	mergeSortHelper(array, mid + 1, end, temp_array, changes);
-	merge(array, start, mid, end, temp_array, changes);
-}
-
-function merge(array, start, mid, end, temp_array, changes){
     let k = start;
     let i = start;
     let j = mid + 1;
     while (i <= mid && j <= end) {
         changes.push([i, j]);
         changes.push([i, j]);
-        if (temp_array[i] <= temp_array[j]) {
-            changes.push([k, temp_array[i]]);
-            array[k++] = temp_array[i++];
-        }else{
-            changes.push([k, temp_array[j]]);
-            array[k++] = temp_array[j++];
-        }
+      if (temp_array[i] <= temp_array[j]) {
+        changes.push([k, temp_array[i]]);
+        array[k++] = temp_array[i++];
+      } else {
+        changes.push([k, temp_array[j]]);
+        array[k++] = temp_array[j++];
+      }
     }
     while (i <= mid) {
         changes.push([i, i]);
@@ -71,4 +82,5 @@ function merge(array, start, mid, end, temp_array, changes){
         changes.push([k, temp_array[j]]);
         array[k++] = temp_array[j++];
     }
-}
+  }
+  
