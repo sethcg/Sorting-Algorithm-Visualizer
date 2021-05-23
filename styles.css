@@ -21,11 +21,13 @@ html, body{
     font-weight: bold;
     /*background-color: white;*/
 
-    border: 3px;
+    border: 4px;
     border-color: #2b2b2b;
     border-style: solid;
     border-radius: 8px;
     background-color: #444444;
+
+    max-width: 1000px;
 }
 
 .header-buttons{
@@ -39,7 +41,7 @@ html, body{
 
 
 .bar {
-    width: 13px;
+    width: 14px;
     background-color: #387a96;
     margin-left: 1.5px;
     margin-right: 1.5px;
@@ -50,7 +52,7 @@ html, body{
     width: calc(95% - 5px);
     height: 400px;
     margin: auto;
-    border: 5px;
+    border: 4px;
     border-color: #2b2b2b;
     border-style: solid;
     border-radius: 16px;
@@ -61,7 +63,7 @@ html, body{
   }
 
 .bottom-button-container{
-    width: calc(95% - 5px);
+    width: calc(95% - 10px);
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;

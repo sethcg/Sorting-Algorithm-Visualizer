@@ -20,6 +20,8 @@ function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 document.getElementById("Play").onclick = function() {
     if(button == null){ return; }
     switch(sort_str) {
+        case "BubbleSort":
+            break;
         case "InsertionSort":
             insertionSort(array);
             break;
@@ -30,11 +32,11 @@ document.getElementById("Play").onclick = function() {
             mergeSort(array);
             break;
         case "QuickSort":
-            quickSort();
+            quickSort(array);
             break;
         case "CountingSort":
             break;
-        case "HeapSort":
+        case "RadixSort":
             break;
         default:
             break;
@@ -45,6 +47,25 @@ document.getElementById("Play").onclick = function() {
 //Contols the Reset button
 document.getElementById("Reset").onclick = function() {
     reset();
+};
+
+//Contols the BubbleSort button
+document.getElementById("BubbleSort").onclick = function() {
+    //Updating last button appearance
+    button = document.getElementById(last_sort_str);
+    button.classList.remove("top-button-no-hover");
+    button.classList.add("top-button");
+    button.disabled = false;
+
+    reset();
+    sort_str = "BubbleSort";
+    last_sort_str = "BubbleSort";
+    
+    //Updating this button appearance
+    button = document.getElementById(sort_str);
+    button.disabled = true;
+    button.classList.remove("top-button");
+    button.classList.add("top-button-no-hover");  
 };
 
 //Contols the InsertionSort button
@@ -123,6 +144,7 @@ document.getElementById("QuickSort").onclick = function() {
     button.classList.add("top-button-no-hover");  
 };
 
+/*
 //Contols the CountingSort button
 document.getElementById("CountingSort").onclick = function() {
     //Updating last button appearance
@@ -142,8 +164,8 @@ document.getElementById("CountingSort").onclick = function() {
     button.classList.add("top-button-no-hover");  
 };
 
-//Contols the HeapSort button
-document.getElementById("HeapSort").onclick = function() {
+//Contols the RadixSort button
+document.getElementById("RadixSort").onclick = function() {
     //Updating last button appearance
     button = document.getElementById(last_sort_str);
     button.classList.remove("top-button-no-hover");
@@ -151,8 +173,8 @@ document.getElementById("HeapSort").onclick = function() {
     button.disabled = false;
 
     reset();
-    sort_str = "HeapSort";
-    last_sort_str = "HeapSort";
+    sort_str = "RadixSort";
+    last_sort_str = "RadixSort";
     
     //Updating this button appearance
     button = document.getElementById(sort_str);
@@ -160,6 +182,7 @@ document.getElementById("HeapSort").onclick = function() {
     button.classList.remove("top-button");
     button.classList.add("top-button-no-hover");  
 };
+*/
 
 export function loadData(array){
     var bar_container = document.getElementById("bar-container");
@@ -181,11 +204,11 @@ async function reset(){
 
     var bar_container = document.getElementById("bar-container");
     bar_container.querySelectorAll('*').forEach(n => n.remove());
-    const size = 50;
+    const array_size = 50;
     const min_value = 5;
     const max_value = 390;
     array = [];
-    for(var i = 0; i < size; i++){
+    for(var i = 0; i < array_size; i++){
         array.push(Math.floor((Math.random() * max_value) + min_value));
     }
     loadData(array);

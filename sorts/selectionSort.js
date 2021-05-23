@@ -16,14 +16,14 @@ export async function selectionSort(array){
         if(boolean_reset == true) { return; } //Stop if reset is called
 
         document.getElementById("bar_" + index).style.backgroundColor = color_gold;
-        await sleep(50);
+        await sleep(10);
             var temp_index = index;
             for(var i = index + 1; i < array.length; i++){
                 if(boolean_reset == true) { return; } //Stop if reset is called
 
                 //Cycle Through With Wait
                 document.getElementById("bar_" + i).style.backgroundColor = color_red;
-                await sleep(50);
+                await sleep(20);
 
                 if(array[i] < array[temp_index]){
                     temp_index = i;

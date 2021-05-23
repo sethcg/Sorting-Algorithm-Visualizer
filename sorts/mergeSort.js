@@ -92,7 +92,7 @@ export async function mergeSort(array){
 function getChanges(array) {
     const changes = [];
     const temp_array = array.slice();
-    mergeSortHelper(array, 0, array.length - 1, temp_array , changes);
+    mergeSortHelper(array, 0, array.length - 1, temp_array, changes);
     return changes;
 }
 
