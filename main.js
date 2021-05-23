@@ -51,6 +51,7 @@ document.getElementById("Reset").onclick = function() {
     reset();
 };
 
+/*
 //Contols the BubbleSort button
 document.getElementById("BubbleSort").onclick = function() {
     //Updating last button appearance
@@ -69,6 +70,7 @@ document.getElementById("BubbleSort").onclick = function() {
     button.classList.remove("top-button");
     button.classList.add("top-button-no-hover");  
 };
+*/
 
 //Contols the InsertionSort button
 document.getElementById("InsertionSort").onclick = function() {
