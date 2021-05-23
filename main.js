@@ -2,6 +2,7 @@ import { insertionSort } from "./sorts/insertionSort.js";
 import { mergeSort } from "./sorts/mergeSort.js";
 import { selectionSort } from "./sorts/selectionSort.js";
 import { quickSort } from "./sorts/quickSort.js";
+import { bubbleSort } from "./sorts/bubbleSort.js";
 
 export var boolean_reset = false;
 
@@ -21,6 +22,7 @@ document.getElementById("Play").onclick = function() {
     if(button == null){ return; }
     switch(sort_str) {
         case "BubbleSort":
+            bubbleSort(array);
             break;
         case "InsertionSort":
             insertionSort(array);

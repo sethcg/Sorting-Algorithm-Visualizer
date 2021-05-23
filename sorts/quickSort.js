@@ -4,6 +4,7 @@ function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
 var lastPivot = "";
 
+//Color Palette
 var color_red = "#96384b";
 var color_blue = "#387a96";
 var color_gold = "#c0ac59";
