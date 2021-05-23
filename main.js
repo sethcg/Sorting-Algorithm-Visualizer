@@ -1,6 +1,7 @@
-import { insertionSort } from "./insertionSort.js";
-import { mergeSort } from "./mergeSort.js";
-import { selectionSort } from "./selectionSort.js";
+import { insertionSort } from "./sorts/insertionSort.js";
+import { mergeSort } from "./sorts/mergeSort.js";
+import { selectionSort } from "./sorts/selectionSort.js";
+import { quickSort } from "./sorts/quickSort.js";
 
 export var boolean_reset = false;
 
@@ -29,6 +30,7 @@ document.getElementById("Play").onclick = function() {
             mergeSort(array);
             break;
         case "QuickSort":
+            quickSort();
             break;
         case "CountingSort":
             break;
