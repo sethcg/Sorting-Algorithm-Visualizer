@@ -5,12 +5,15 @@ function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 //Color Palette
 var color_red = "#96384b";
 var color_blue = "#387a96";
-var color_gold = "#baa347";
+var color_gold = "#c0ac59";
 var color_green = "#4b9638";
+var color_purple = "#a04b87";
+var color_pink = "#bc81ab";
 
 var mergecounter = 0;
 
 export async function mergeSort(array){
+    mergecounter = 0;
     var sort_changes = getChanges(array)
 
     const half = Math.floor(array.length / 2) - 1;
@@ -59,12 +62,12 @@ export async function mergeSort(array){
                 bar_two.backgroundColor = color_gold;
                 //console.log("EIGHTH");
             }else if(quarterArray.includes(merge_count)){ 
-                bar_one.backgroundColor = "purple";
-                bar_two.backgroundColor = "purple";
+                bar_one.backgroundColor = color_purple;
+                bar_two.backgroundColor = color_purple;
                 //console.log("QUARTER");
             }else if(halfArray.includes(merge_count)){ 
-                bar_one.backgroundColor = "pink";
-                bar_two.backgroundColor = "pink";
+                bar_one.backgroundColor = color_pink;
+                bar_two.backgroundColor = color_pink;
                 //console.log("HALF");
             }else if(merge_count == whole){ 
                 bar_one.backgroundColor = color_green;
@@ -100,35 +103,34 @@ function mergeSortHelper(array, start, end, temp_array, changes){
     mergeSortHelper(temp_array , mid + 1, end, array, changes);
     merge(array, start, mid, end, temp_array, changes);
 }
-  
-var timesMergeCalled = 0;
+
 function merge(array, start, mid, end, temp_array, changes){
-    timesMergeCalled++;
+    mergecounter++;
 
     let k = start;
     let i = start;
     let j = mid + 1;
     while (i <= mid && j <= end) {
         if(boolean_reset == true) { return; } //Stop if reset is called
-        changes.push([i, j, timesMergeCalled]); //Color Push
+        changes.push([i, j, mergecounter]); //Color Push
       if (temp_array[i] <= temp_array[j]) {
-        changes.push([k, temp_array[i], timesMergeCalled]); //Swap Push
+        changes.push([k, temp_array[i], mergecounter]); //Swap Push
         array[k++] = temp_array[i++];
       } else {
-        changes.push([k, temp_array[j], timesMergeCalled]); //Swap Push
+        changes.push([k, temp_array[j], mergecounter]); //Swap Push
         array[k++] = temp_array[j++];
       }
     }
     while (i <= mid) {
         if(boolean_reset == true) { return; } //Stop if reset is called
-        changes.push([i, i, timesMergeCalled]); //Color Push
-        changes.push([k, temp_array[i], timesMergeCalled]); //Swap Push
+        changes.push([i, i, mergecounter]); //Color Push
+        changes.push([k, temp_array[i], mergecounter]); //Swap Push
         array[k++] = temp_array[i++];
     }
     while (j <= end) {
         if(boolean_reset == true) { return; } //Stop if reset is called
-        changes.push([j, j, timesMergeCalled]); //Color Push
-        changes.push([k, temp_array[j], timesMergeCalled]); //Swap Push
+        changes.push([j, j, mergecounter]); //Color Push
+        changes.push([k, temp_array[j], mergecounter]); //Swap Push
         array[k++] = temp_array[j++];
     }
 }
