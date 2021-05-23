@@ -1,4 +1,4 @@
-import { loadData } from "./main.js";
+import { boolean_reset } from "./main.js";
 
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
@@ -21,16 +21,27 @@ export async function mergeSort(array){
     const secondhalf = half * 2;
 
     const firstquarter = quarter;
-    const secondquarter = quarter * 2 - 1;
+    const secondquarter = firsthalf - 1;
     const thirdquarter = quarter * 3;
-    const fourthquarter = quarter * 4 - 1;
+    const fourthquarter = secondhalf - 1;
+
+    const eighth_one = eighth;
+    const eighth_two = firstquarter - 1;
+    const eighth_three = eighth * 3 - 1;
+    const eighth_four = secondquarter - 1;
+    const eighth_five = eighth * 5;
+    const eighth_six = thirdquarter - 1;
+    const eighth_seven = eighth * 7 - 1;
+    const eighth_eight = fourthquarter - 1;
 
     const whole = array.length - 1;
     const halfArray = [firsthalf, secondhalf];
     const quarterArray = [firstquarter, secondquarter, thirdquarter, fourthquarter];
-    const eighthArray = [];
+    const eighthArray = [eighth_one, eighth_two, eighth_three, eighth_four, eighth_five, eighth_six, eighth_seven, eighth_eight];
 
     for(let index = 0; index < sort_changes.length; index++){
+        if(boolean_reset == true) { return; } //Stop if reset is called
+
         const isColorChange = index % 2 == 0;
         if(isColorChange){
             const [one, two, merge_count] = sort_changes[index];
@@ -43,18 +54,22 @@ export async function mergeSort(array){
             await sleep(50);
 
             //Change Color Back, depending on whether it is an eighth, quarter, half, or whole
-            if(quarterArray.indexOf(merge_count) >= 0){ 
+            if(eighthArray.includes(merge_count)){ 
+                bar_one.backgroundColor = color_gold;
+                bar_two.backgroundColor = color_gold;
+                //console.log("EIGHTH");
+            }else if(quarterArray.includes(merge_count)){ 
                 bar_one.backgroundColor = "purple";
                 bar_two.backgroundColor = "purple";
-                console.log("QUARTER");
-            }else if(halfArray.indexOf(merge_count) >= 0){ 
+                //console.log("QUARTER");
+            }else if(halfArray.includes(merge_count)){ 
                 bar_one.backgroundColor = "pink";
                 bar_two.backgroundColor = "pink";
-                console.log("HALF");
+                //console.log("HALF");
             }else if(merge_count == whole){ 
                 bar_one.backgroundColor = color_green;
                 bar_two.backgroundColor = color_green;
-                console.log("WHOLE");
+                //console.log("WHOLE");
             }else{
                 bar_one.backgroundColor = color_blue;
                 bar_two.backgroundColor = color_blue;
@@ -66,12 +81,9 @@ export async function mergeSort(array){
             //Swap Heights
             const [barIndex, height, merge_count] = sort_changes[index];
             swapHelper(barIndex, height);
-            console.log(merge_count);
+            //console.log(merge_count);
         }
     }
-
-    console.log("timesMergeSortHelperCalled: " + timesMergeSortHelperCalled);
-    console.log("timesMergeCalled: " + timesMergeCalled);
 }
 
 function getChanges(array) {
@@ -81,9 +93,7 @@ function getChanges(array) {
     return changes;
 }
 
-var timesMergeSortHelperCalled = 0;
 function mergeSortHelper(array, start, end, temp_array, changes){
-    timesMergeSortHelperCalled++;
     if (start === end) return;
     const mid = Math.floor((start + end) / 2);
     mergeSortHelper(temp_array , start, mid, array, changes);
@@ -99,8 +109,8 @@ function merge(array, start, mid, end, temp_array, changes){
     let i = start;
     let j = mid + 1;
     while (i <= mid && j <= end) {
+        if(boolean_reset == true) { return; } //Stop if reset is called
         changes.push([i, j, timesMergeCalled]); //Color Push
-        //changes.push([i, j]);
       if (temp_array[i] <= temp_array[j]) {
         changes.push([k, temp_array[i], timesMergeCalled]); //Swap Push
         array[k++] = temp_array[i++];
@@ -110,14 +120,14 @@ function merge(array, start, mid, end, temp_array, changes){
       }
     }
     while (i <= mid) {
+        if(boolean_reset == true) { return; } //Stop if reset is called
         changes.push([i, i, timesMergeCalled]); //Color Push
-        //changes.push([i, i]);
         changes.push([k, temp_array[i], timesMergeCalled]); //Swap Push
         array[k++] = temp_array[i++];
     }
     while (j <= end) {
+        if(boolean_reset == true) { return; } //Stop if reset is called
         changes.push([j, j, timesMergeCalled]); //Color Push
-        //changes.push([j, j]);
         changes.push([k, temp_array[j], timesMergeCalled]); //Swap Push
         array[k++] = temp_array[j++];
     }

@@ -161,8 +161,9 @@ document.getElementById("HeapSort").onclick = function() {
 
 export function loadData(array){
     var bar_container = document.getElementById("bar-container");
+        bar_container.querySelectorAll('*').forEach(n => n.remove());
     for(let index = 0; index < array.length; index++){
-        var bar = document.createElement("div");
+        var bar = document.createElement("bar");
         bar.setAttribute("class", "bar");
         bar.style.height =  array[index] + "px";
         bar.style.marginTop =  (400 - array[index]) + "px";
@@ -171,16 +172,22 @@ export function loadData(array){
     }
 }
 
-function reset(){
+async function reset(){
+    boolean_reset = true;
+    await sleep(500);
+    boolean_reset = false;
+
     var bar_container = document.getElementById("bar-container");
     bar_container.querySelectorAll('*').forEach(n => n.remove());
     const size = 50;
-    const min_value = 1;
-    const max_value = 400;
+    const min_value = 5;
+    const max_value = 390;
     array = [];
     for(var i = 0; i < size; i++){
         array.push(Math.floor((Math.random() * max_value) + min_value));
     }
     loadData(array);
 }
+
+reset();
 //window.addEventListener("resize", draw);

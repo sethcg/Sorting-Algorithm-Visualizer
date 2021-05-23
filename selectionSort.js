@@ -1,5 +1,4 @@
-import { loadData } from "./main.js";
-//import { boolean_reset } from "./main.js";
+import { boolean_reset } from "./main.js";
 
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
@@ -14,13 +13,13 @@ export async function selectionSort(array){
     var match = false;
 
     for(var index = 0; index <= array.length - 1; index++){
-        //if(boolean_reset == true) { return; } //Stop if reset is called
+        if(boolean_reset == true) { return; } //Stop if reset is called
 
         document.getElementById("bar_" + index).style.backgroundColor = color_gold;
         await sleep(50);
             var temp_index = index;
             for(var i = index + 1; i < array.length; i++){
-                //if(boolean_reset == true) { return; } //Stop if reset is called
+                if(boolean_reset == true) { return; } //Stop if reset is called
 
                 //Cycle Through With Wait
                 document.getElementById("bar_" + i).style.backgroundColor = color_red;
