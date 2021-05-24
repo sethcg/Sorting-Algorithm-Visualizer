@@ -147,46 +147,6 @@ document.getElementById("QuickSort").onclick = function() {
     button.classList.add("top-button-no-hover");  
 };
 
-/*
-//Contols the CountingSort button
-document.getElementById("CountingSort").onclick = function() {
-    //Updating last button appearance
-    button = document.getElementById(last_sort_str);
-    button.classList.remove("top-button-no-hover");
-    button.classList.add("top-button");
-    button.disabled = false;
-
-    reset();
-    sort_str = "CountingSort";
-    last_sort_str = "CountingSort";
-    
-    //Updating this button appearance
-    button = document.getElementById(sort_str);
-    button.disabled = true;
-    button.classList.remove("top-button");
-    button.classList.add("top-button-no-hover");  
-};
-
-//Contols the RadixSort button
-document.getElementById("RadixSort").onclick = function() {
-    //Updating last button appearance
-    button = document.getElementById(last_sort_str);
-    button.classList.remove("top-button-no-hover");
-    button.classList.add("top-button");
-    button.disabled = false;
-
-    reset();
-    sort_str = "RadixSort";
-    last_sort_str = "RadixSort";
-    
-    //Updating this button appearance
-    button = document.getElementById(sort_str);
-    button.disabled = true;
-    button.classList.remove("top-button");
-    button.classList.add("top-button-no-hover");  
-};
-*/
-
 export function loadData(array){
     var bar_container = document.getElementById("bar-container");
         bar_container.querySelectorAll('*').forEach(n => n.remove());
