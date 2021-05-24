@@ -13,15 +13,23 @@ export async function bubbleSort(array){
         if(boolean_reset == true) { return; } //Stop if reset is called
         for (var j = 0; j < array.length - i - 1; j++){
             if(boolean_reset == true) { return; } //Stop if reset is called
-            if (array[j] > array[j+1]){
+            var indexOne = j;
+            var indexTwo = j + 1;
+
+            var barOne = document.getElementById("bar_" + indexOne).style;
+            var barTwo = document.getElementById("bar_" + indexTwo).style;
+
+            //Change Color Of Selected Bars
+            barOne.backgroundColor = color_red;
+            barTwo.backgroundColor = color_red;
+            await sleep(10);
+
+            barOne.backgroundColor = color_blue;
+            barTwo.backgroundColor = color_blue;
+
+            if(array[j] > array[j + 1]){
                 await sleep(10);
-                // swap arr[j+1] and arr[j]
-                var indexOne = j;
-                var indexTwo = j + 1;
-
-                var barOne = document.getElementById("bar_" + indexOne).style;
-                var barTwo = document.getElementById("bar_" + indexTwo).style;
-
+                
                 //Swap Height
                 var temp_height = barOne.height;
                 barOne.height = barTwo.height;
@@ -36,7 +44,12 @@ export async function bubbleSort(array){
                 var temp = array[indexOne];
                 array[indexOne] = array[indexTwo];
                 array[indexTwo] = temp;
+
             }
         }
+    }
+    for(let x = 0; x < array.length; x++){
+        await sleep(5);
+        document.getElementById("bar_" + x).style.backgroundColor = color_green;
     }
 }

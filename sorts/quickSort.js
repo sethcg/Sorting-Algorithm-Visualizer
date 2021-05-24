@@ -49,7 +49,7 @@ export async function quickSort(array){
     document.getElementById("bar_" + lastPivot).style.backgroundColor = color_blue; //Update final pivot
     for(let x = 0; x < array.length; x++){
         await sleep(5);
-        document.getElementById("bar_" + x).style.backgroundColor = color_green; //Update final pivot
+        document.getElementById("bar_" + x).style.backgroundColor = color_green;
     }
 }
 
