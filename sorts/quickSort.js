@@ -99,7 +99,7 @@ function partition(array, leftIndex, rightIndex, changes){
     return (i + 1);
 }
 
-async function swapHelper(array, indexOne, indexTwo){
+function swapHelper(array, indexOne, indexTwo){
     var barOne = document.getElementById("bar_" + indexOne).style;
     var barTwo = document.getElementById("bar_" + indexTwo).style;
 
