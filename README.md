@@ -9,7 +9,7 @@ This is the layout of the sorting visualizer.
 ![Picture of Sorting Visual](https://i.imgur.com/q82uZMa.png)
 
 ## Features
-- JavaScript
+- JavaScript, CSS, and HTML
 - Rect Coloring to display sorting pattern
 - Simple Menu to select, start, and reset
 
